@@ -2,11 +2,12 @@ package jp.techacademy.naoya.ueno.calcapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -36,22 +37,47 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        double num1 = Double.parseDouble(mEditText1.getText().toString());
-        double num2 = Double.parseDouble(mEditText2.getText().toString());
 
-        Intent intent = new Intent(this, SecondActivity.class);
-        intent.putExtra("VALUE1", num1);
-        intent.putExtra("VALUE2", num2);
-        if (v.getId() == R.id.button1) {
-            intent.putExtra("VALUE3", 1);
-        } else if (v.getId() == R.id.button2) {
-            intent.putExtra("VALUE3", 2);
-        } else if (v.getId() == R.id.button3) {
-            intent.putExtra("VALUE3", 3);
-        } else {
-            intent.putExtra("VALUE3", 4);
+        try {
+            double num1 = Double.parseDouble(mEditText1.getText().toString());
+            double num2 = Double.parseDouble(mEditText2.getText().toString());
+
+            Intent intent = new Intent(this, SecondActivity.class);
+            intent.putExtra("VALUE1", num1);
+            intent.putExtra("VALUE2", num2);
+            if (v.getId() == R.id.button1) {
+                intent.putExtra("VALUE3", 1);
+            } else if (v.getId() == R.id.button2) {
+                intent.putExtra("VALUE3", 2);
+            } else if (v.getId() == R.id.button3) {
+                intent.putExtra("VALUE3", 3);
+            } else {
+                intent.putExtra("VALUE3", 4);
+            }
+            startActivity(intent);
         }
-        startActivity(intent);
+        catch (NumberFormatException e) {
+            showAlertDialog();
+        }
+
+    }
+
+    private void showAlertDialog() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage("正しい数値を入力してください。");
+
+        alertDialogBuilder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which){
+                        mEditText1.getEditableText().clear();
+                        mEditText2.getEditableText().clear();
+                        mEditText1.requestFocus();
+                    }
+                });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 
 }

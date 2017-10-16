@@ -6,9 +6,12 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SecondActivity"
-        android:id="@+id/textView"/>
+        android:layout_margin="30px"
+        android:textColor="#333"
+        android:textSize="18sp" />
 
 </LinearLayout>

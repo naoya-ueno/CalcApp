@@ -36,34 +36,38 @@
         android:id="@+id/editText2"/>
 
     <Button
+        android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText2"
         android:text="+"
-        android:id="@+id/button1"/>
+        android:textSize="18sp" />
 
     <Button
+        android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/button1"
         android:layout_toRightOf="@+id/button1"
         android:text="−"
-        android:id="@+id/button2"/>
+        android:textSize="18sp" />
 
     <Button
+        android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/button1"
         android:layout_toRightOf="@+id/button2"
         android:text="×"
-        android:id="@+id/button3"/>
+        android:textSize="18sp" />
 
     <Button
+        android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/button1"
         android:layout_toRightOf="@+id/button3"
         android:text="÷"
-        android:id="@+id/button4"/>
+        android:textSize="18sp" />
 
 </RelativeLayout>
